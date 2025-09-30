@@ -14,9 +14,13 @@ export function useList() {
       const res = await api.get("/leads");
       setLeads(res.data);
 
-    } catch(e) {
-      throw new Error(e)
-    }
+    }  catch (e) {
+  if (e instanceof Error) {
+    throw new Error(e.message);
+  } else {
+    throw new Error(String(e));
+  }
+}
   };
 
 
