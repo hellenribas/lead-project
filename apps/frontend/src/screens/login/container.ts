@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { loginAdmin } from "@/services/api";
 import { useRouter } from "next/navigation";
@@ -15,8 +15,12 @@ export function useLogin() {
     try {
       await loginAdmin({ email, password });
       router.push("/leads");
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Erro inesperado");
+      }
     }
   };
   return {
