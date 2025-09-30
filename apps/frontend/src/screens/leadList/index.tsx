@@ -7,8 +7,8 @@ export default function LeadsList() {
   const { handleNew, leads, handleDelete, handleEdit, handleExportCSV } = useList();
 
   return (
-    <div style={{ padding: 32 }}>
-      <h1>Painel de Leads</h1>
+    <div style={{ padding: 32, backgroundColor: 'black' }}>
+      <S.Title>Painel de Leads</S.Title>
       <S.Button onClick={handleNew}>Novo Lead</S.Button>
       <S.Button onClick={handleExportCSV}>Exportar CSV</S.Button>
 

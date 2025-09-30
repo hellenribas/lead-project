@@ -8,7 +8,8 @@ export interface ILead {
   message?: string;        
   tracking?: ITrackingData; 
   createdAt?: string;      
-  updatedAt?: string;      
+  updatedAt?: string;  
+  position: string;    
 }
 
 export interface ITrackingData {
@@ -20,3 +21,5 @@ export interface ITrackingData {
   gclid?: string;
   fbclid?: string;
 }
+
+export type ILeadForm = Partial<Omit<ILead, 'id'>> & { id?: number };

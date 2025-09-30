@@ -10,11 +10,15 @@ export function useList() {
   const router = useRouter();
 
   const fetchLeads = async () => {
-    const res = await api.get("/leads");
-    setLeads(res.data);
+    try {
+      const res = await api.get("/leads");
+      setLeads(res.data);
+
+    } catch(e) {
+      throw new Error(e)
+    }
   };
 
-  
 
   useEffect(() => {
     fetchLeads();
