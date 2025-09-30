@@ -2,7 +2,7 @@ import { ILead } from "@/screens/leadList/types";
 import axios, { AxiosError } from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3003",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'localhost:3001',
   headers: {
     "Content-Type": "application/json",
   },
