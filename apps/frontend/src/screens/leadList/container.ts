@@ -14,6 +14,8 @@ export function useList() {
     setLeads(res.data);
   };
 
+  
+
   useEffect(() => {
     fetchLeads();
   }, []);
@@ -32,11 +34,34 @@ export function useList() {
     router.push(`/leads/${l.id}`)
   }
 
+    const handleExportCSV = () => {
+    if (leads.length === 0) return;
+
+    const header = Object.keys(leads[0]).join(",");
+    const rows = leads.map(lead => {
+      return Object.values(lead)
+        .map(value => `"${value ?? ""}"`)
+        .join(",");
+    });
+
+    const csvContent = [header, ...rows].join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "leads.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return {
     handleDelete,
     router,
     leads,
     handleNew,
-    handleEdit
+    handleEdit,
+    handleExportCSV
   };
 }
