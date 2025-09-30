@@ -2,11 +2,10 @@
   "name": "my-turborepo",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "build:backend": "cd apps/backend && yarn install && yarn build",
+    "build:frontend": "cd apps/frontend && yarn install && yarn build",
+    "build:docs": "cd apps/docs && yarn install && yarn build",
+    "build:all": "yarn build:backend && yarn build:frontend && yarn build:docs"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
