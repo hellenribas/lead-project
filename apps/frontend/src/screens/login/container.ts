@@ -14,7 +14,7 @@ export function useLogin() {
     e.preventDefault();
     try {
       await loginAdmin({ email, password });
-      router.push("/admin/leads");
+      router.push("/leads");
     } catch (err: any) {
       setError(err.message);
     }
