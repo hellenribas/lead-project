@@ -14,7 +14,6 @@ type FormData = {
 };
 
 export default function FormScreen() {
-  const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
